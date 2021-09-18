@@ -1,10 +1,16 @@
 {% extends "base_generic.html" %}
+    {% load static %}
     {% block content %}
     <main class="container">
       <div class="text-center py-5 px-3">
         <h1>СИСТЕМА МОНИТОРИНГА УСТОЙЧИВОСТИ РАБОЧИХ ПРОЦЕCCОВ и КОМПОНЕНТОВ (СМУРПиК)</h1>
         Прототип (MVP) системы мониторинга устойчивости рабочих процессов и компонентов или просто "СМУРПиК".</br>
         Программное решение кейса, реализованого командой NESTRO TECH (АО "Зарубежнефть") в рамках IT-чемпионата нефтяной отрасли 2021 года.
+      </div>
+      <div class="text-center">
+        <a href="https://youtu.be/DtyIV_fP5_8">
+          <img src="{% static 'videoscr.png' %}" class="img-thumbnail shadow mb-5" alt="Видео">
+        </a>
       </div>
     </main>
     {% endblock  %}
