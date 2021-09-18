@@ -10,10 +10,10 @@ var OPACITY = {
     LINK_FADED: 0.05,
     LINK_HIGHLIGHT: 0.9
   },
-  TYPES = ["it", "bs", "ot", "Equity", "Liability"],
-  TYPE_COLORS = ["#1b9e77", "#d95f02", "#8da0cb", "#e7298a", "#66a61e", "#e6ab02", "#a6761d"],
+  TYPES = ["it", "bs", "ot", "yellow", "red"],
+  TYPE_COLORS = ["#1b9e77", "#FFA500\t", "#8da0cb", "#ffff00", "#D63028", "#a6761d"],
   TYPE_HIGHLIGHT_COLORS = ["#66c2a5", "#fc8d62", "#8da0cb", "#e78ac3", "#a6d854", "#ffd92f", "#e5c494"],
-    LINK_COLOR = "#b3b3b3",
+  LINK_COLOR = "#b3b3b3",
    // LINK_COLOR = "#7570b3",
   INFLOW_COLOR = "#2E86D1",
   OUTFLOW_COLOR = "#D63028",
@@ -326,11 +326,6 @@ function update () {
       .attr("height", function (d) { return d.height; })
       .attr("width", biHiSankey.nodeWidth());
 
-  // node.style("fill", function (d) {
-  //       d.color = "#b3b3b3";//colorScale(d.type.replace(/ .*/, ""));
-  //       return d.color;
-  //     });
-
   node.exit()
     .transition()
       .duration(TRANSITION_DURATION)
@@ -524,7 +519,7 @@ function numberWithSpaces(x) {
 
 function httpHttpRequest() {
   var xhttp = new XMLHttpRequest();
-  xhttp.open("GET", "http://localhost:6680", true);
+  xhttp.open("GET", "http://dh.bitc.ru:8021/api/v1", true);
   xhttp.send();
   xhttp.onload = function()  {
     console.log(xhttp.responseText);
@@ -559,8 +554,16 @@ function getData() {
       if(newExampleNode.layer == "bs"){
         var xPOS = WIDTH;
       }
-      exampleNodes.push({"type":newExampleNode.layer,"id":newExampleNode.id,"parent":null,"name":newExampleNode.label,"costdown":newExampleNode.costdown,
-        "access":newExampleNode.access,"stead":newExampleNode.stead,
+      var stead = newExampleNode.stead;
+      var layer = newExampleNode.layer;
+      if (stead>=0.6&&stead<0.9){
+        layer = "yellow";
+      }
+        else if(stead<0.5){
+        layer = "red";
+      }
+      exampleNodes.push({"type":layer,"id":newExampleNode.id,"parent":null,"name":newExampleNode.label,"costdown":newExampleNode.costdown,
+        "access":newExampleNode.access,"stead":stead,
       "xPOS":xPOS});
     }
         // = jsnArray[0];
@@ -601,8 +604,8 @@ function build() {
   if (!AUTO_POSITION) {
     exampleNodes.forEach((r, i) => {
      //  if(r.xPOS!=0){
-      //   r.color= "#b3b3b3";//colorScale(d.type.replace(/ .*/, ""));
-     // r.style("fill", "#b3b3b3");//colorScale(d.type.replace(/ .*/, ""));
+        // r.style("fill", "#b3b3b3"); //.color= "#b3b3b3";//colorScale(d.type.replace(/ .*/, ""));
+      //r.style("fill", "#b3b3b3");//colorScale(d.type.replace(/ .*/, ""));
      // });
       //   r.x = r.xPOS;
      //  }
@@ -611,6 +614,7 @@ function build() {
     });
 
   }
+  //var nodes = biHiSankey.nodes();
   if (!AUTO_POSITION) {
     exampleLinks.forEach((r, i) => {
      // if(r.xPOS!=0){
@@ -622,13 +626,30 @@ function build() {
     });
 
   }
-
- // var node = svg.selectAll("#node");
- //  node.forEach((r, i) => {
- //    r.color="#b3b3b3";
- //    r.textContent="#b3b3b3";
- //  });
-  // }
   update();
+  var color = d3.scale.linear()
+      .domain ([0, d3.svg.symbolTypes.length-1])
+      .range (["yellow", "violet"]);
+
+  svg.selectAll("rect")
+      .data(nodes)
+      .enter().append("rect")
+      .style("fill",  function(d) {
+        console.log(d);
+        var symbolIndex = 0;
+        for(var i=0; i<d3.svg.symbolTypes.length; i++){
+          if(d.type == d3.svg.symbolTypes[i])
+            symbolIndex=i;
+        };
+        return "#b3b3b3";//color(symbolIndex);
+      })
+ // var   node = svg.select("#nodes").selectAll(".node")
+ //     .data(biHiSankey.collapsedNodes(), function (d) { return d.id; })
+ //  node.style("fill", function (d) {
+ //        d.color = "#b3b3b3";//colorScale(d.type.replace(/ .*/, ""));
+ //        return d.color;
+ //      })
+  // }
+
 
 }
