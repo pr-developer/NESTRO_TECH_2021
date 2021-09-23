@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <gexf xmlns="http://www.gexf.net/1.2draft" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.gexf.net/1.2draft http://www.gexf.net/1.2draft/gexf.xsd" version="1.2">
-  <meta lastmodifieddate="2021-09-18">
+  <meta lastmodifieddate="2021-09-19">
     <creator>NetworkX 2.6.3</creator>
   </meta>
   <graph defaultedgetype="directed" mode="static" name="">
@@ -12,189 +12,248 @@
       <attribute id="4" title="costdown" type="double" />
     </attributes>
     <nodes>
-      <node id="it_7" label="Сервис Б1">
-        <attvalues>
-          <attvalue for="0" value="service" />
-          <attvalue for="1" value="it" />
-          <attvalue for="2" value="1" />
-          <attvalue for="3" value="0.15" />
-          <attvalue for="4" value="211000.0" />
-        </attvalues>
-      </node>
-      <node id="it_6" label="Сервис Б2">
-        <attvalues>
-          <attvalue for="0" value="service" />
-          <attvalue for="1" value="it" />
-          <attvalue for="2" value="1" />
-          <attvalue for="3" value="0.15" />
-          <attvalue for="4" value="211000.0" />
-        </attvalues>
-      </node>
-      <node id="mt_1" label="CPU_%">
-        <attvalues>
-          <attvalue for="0" value="metric" />
-          <attvalue for="1" value="it" />
-          <attvalue for="2" value="0" />
-          <attvalue for="3" value="0.5" />
-          <attvalue for="4" value="146600.0" />
-        </attvalues>
-      </node>
-      <node id="mt_2" label="RAM %">
-        <attvalues>
-          <attvalue for="0" value="metric" />
-          <attvalue for="1" value="it" />
-          <attvalue for="2" value="1" />
-          <attvalue for="3" value="0.5" />
-          <attvalue for="4" value="219900.0" />
-        </attvalues>
-      </node>
-      <node id="bs_18" label="ИСТБ">
+      <node id="bs_1" label="Petrel">
         <attvalues>
           <attvalue for="0" value="service" />
           <attvalue for="1" value="bs" />
           <attvalue for="2" value="1" />
-          <attvalue for="3" value="0.8" />
-          <attvalue for="4" value="111000.0" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="1000000.0" />
         </attvalues>
       </node>
-      <node id="mt_3" label="port 1540">
-        <attvalues>
-          <attvalue for="0" value="metric" />
-          <attvalue for="1" value="it" />
-          <attvalue for="2" value="1" />
-          <attvalue for="3" value="0.5" />
-          <attvalue for="4" value="366500.0" />
-        </attvalues>
-      </node>
-      <node id="mt_9" label="ping">
-        <attvalues>
-          <attvalue for="0" value="metric" />
-          <attvalue for="1" value="it" />
-          <attvalue for="2" value="1" />
-          <attvalue for="3" value="0.5" />
-          <attvalue for="4" value="311000.0" />
-        </attvalues>
-      </node>
-      <node id="it_5" label="15-VS-EUSAPP01">
-        <attvalues>
-          <attvalue for="0" value="service" />
-          <attvalue for="1" value="it" />
-          <attvalue for="2" value="1" />
-          <attvalue for="3" value="0.5" />
-          <attvalue for="4" value="733000.0" />
-        </attvalues>
-      </node>
-      <node id="it_17" label="15-VS-ITAPP">
-        <attvalues>
-          <attvalue for="0" value="service" />
-          <attvalue for="1" value="it" />
-          <attvalue for="2" value="1" />
-          <attvalue for="3" value="0.8" />
-          <attvalue for="4" value="111000.0" />
-        </attvalues>
-      </node>
-      <node id="it_8" label="Кластер серверов-1">
-        <attvalues>
-          <attvalue for="0" value="service" />
-          <attvalue for="1" value="it" />
-          <attvalue for="2" value="1" />
-          <attvalue for="3" value="0.5" />
-          <attvalue for="4" value="311000.0" />
-        </attvalues>
-      </node>
-      <node id="bs_13" label="bs_13">
+      <node id="bs_4" label="Корпоративная шина данных">
         <attvalues>
           <attvalue for="0" value="service" />
           <attvalue for="1" value="bs" />
           <attvalue for="2" value="1" />
-          <attvalue for="3" value="0.22" />
-          <attvalue for="4" value="111000.0" />
+          <attvalue for="3" value="0.91" />
+          <attvalue for="4" value="1000000.0" />
         </attvalues>
       </node>
-      <node id="bs_15" label="ИС СНАБ">
+      <node id="it_8" label="Сервер приложений ESB">
+        <attvalues>
+          <attvalue for="0" value="service" />
+          <attvalue for="1" value="it" />
+          <attvalue for="2" value="1" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="it_9" label="Сервер ИСУБ">
+        <attvalues>
+          <attvalue for="0" value="service" />
+          <attvalue for="1" value="it" />
+          <attvalue for="2" value="1" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="it_3" label="Сервер приложений Petrel (резерв)">
+        <attvalues>
+          <attvalue for="0" value="service" />
+          <attvalue for="1" value="it" />
+          <attvalue for="2" value="1" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="it_2" label="Сервер приложений Petrel (осн)">
+        <attvalues>
+          <attvalue for="0" value="service" />
+          <attvalue for="1" value="it" />
+          <attvalue for="2" value="1" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="it_4" label="Сервер БД Petrel">
+        <attvalues>
+          <attvalue for="0" value="service" />
+          <attvalue for="1" value="it" />
+          <attvalue for="2" value="1" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="it_5" label="Сервер приложений Геонафт">
+        <attvalues>
+          <attvalue for="0" value="service" />
+          <attvalue for="1" value="it" />
+          <attvalue for="2" value="1" />
+          <attvalue for="3" value="0.98" />
+          <attvalue for="4" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="bs_5" label="Сетевые папки">
         <attvalues>
           <attvalue for="0" value="service" />
           <attvalue for="1" value="bs" />
           <attvalue for="2" value="1" />
-          <attvalue for="3" value="0.247" />
-          <attvalue for="4" value="100000.0" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="2000000.0" />
         </attvalues>
       </node>
-      <node id="it_11" label="Сервис СНАБ">
+      <node id="bu_2" label="Корректировка и оптимизация тректории бурения">
+        <attvalues>
+          <attvalue for="0" value="service" />
+          <attvalue for="1" value="bu" />
+          <attvalue for="2" value="1" />
+          <attvalue for="3" value="0.948" />
+          <attvalue for="4" value="1000000.0" />
+        </attvalues>
+      </node>
+      <node id="bu_3" label="Мониторинг технологических показателей бурения">
+        <attvalues>
+          <attvalue for="0" value="service" />
+          <attvalue for="1" value="bu" />
+          <attvalue for="2" value="1" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="1000000.0" />
+        </attvalues>
+      </node>
+      <node id="bu_5" label="Хранение архивных данных">
+        <attvalues>
+          <attvalue for="0" value="service" />
+          <attvalue for="1" value="bu" />
+          <attvalue for="2" value="1" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="1000000.0" />
+        </attvalues>
+      </node>
+      <node id="bu_4" label="Обмен данными">
+        <attvalues>
+          <attvalue for="0" value="service" />
+          <attvalue for="1" value="bu" />
+          <attvalue for="2" value="1" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="1000000.0" />
+        </attvalues>
+      </node>
+      <node id="bp_1" label="Мониторинг процесса бурения">
+        <attvalues>
+          <attvalue for="0" value="service" />
+          <attvalue for="1" value="bp" />
+          <attvalue for="2" value="1" />
+          <attvalue for="3" value="0.9896" />
+          <attvalue for="4" value="1000000.0" />
+        </attvalues>
+      </node>
+      <node id="it_1" label="Кластер Petrel">
         <attvalues>
           <attvalue for="0" value="service" />
           <attvalue for="1" value="it" />
           <attvalue for="2" value="1" />
-          <attvalue for="3" value="0.25" />
-          <attvalue for="4" value="100000.0" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="0.0" />
         </attvalues>
       </node>
-      <node id="it_10" label="Менеджер лицензий">
+      <node id="br_1" label="Обеспечение геонавигации">
+        <attvalues>
+          <attvalue for="0" value="service" />
+          <attvalue for="1" value="br" />
+          <attvalue for="2" value="1" />
+          <attvalue for="3" value="0.974" />
+          <attvalue for="4" value="1000000.0" />
+        </attvalues>
+      </node>
+      <node id="br_2" label="Технологическое сопровождение">
+        <attvalues>
+          <attvalue for="0" value="service" />
+          <attvalue for="1" value="br" />
+          <attvalue for="2" value="1" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="1000000.0" />
+        </attvalues>
+      </node>
+      <node id="br_3" label="Средсва обмена и хранения данных">
+        <attvalues>
+          <attvalue for="0" value="service" />
+          <attvalue for="1" value="br" />
+          <attvalue for="2" value="1" />
+          <attvalue for="3" value="0.9999999999999999" />
+          <attvalue for="4" value="1000000.0" />
+        </attvalues>
+      </node>
+      <node id="bu_1" label="Интерпретация в реальном времени данных каротожа">
+        <attvalues>
+          <attvalue for="0" value="service" />
+          <attvalue for="1" value="bu" />
+          <attvalue for="2" value="1" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="1000000.0" />
+        </attvalues>
+      </node>
+      <node id="bs_2" label="Геонафт">
+        <attvalues>
+          <attvalue for="0" value="service" />
+          <attvalue for="1" value="bs" />
+          <attvalue for="2" value="1" />
+          <attvalue for="3" value="0.948" />
+          <attvalue for="4" value="1000000.0" />
+        </attvalues>
+      </node>
+      <node id="bs_3" label="Система управления бурением">
+        <attvalues>
+          <attvalue for="0" value="service" />
+          <attvalue for="1" value="bs" />
+          <attvalue for="2" value="1" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="1000000.0" />
+        </attvalues>
+      </node>
+      <node id="it_6" label="Сервер БД Геонафт">
         <attvalues>
           <attvalue for="0" value="service" />
           <attvalue for="1" value="it" />
           <attvalue for="2" value="1" />
-          <attvalue for="3" value="0.25" />
-          <attvalue for="4" value="211000.0" />
+          <attvalue for="3" value="0.9" />
+          <attvalue for="4" value="0.0" />
         </attvalues>
       </node>
-      <node id="mt_16" label="ping">
+      <node id="it_7" label="Файловый сервер">
         <attvalues>
-          <attvalue for="0" value="metric" />
+          <attvalue for="0" value="service" />
           <attvalue for="1" value="it" />
           <attvalue for="2" value="1" />
-          <attvalue for="3" value="0.8" />
-          <attvalue for="4" value="111000.0" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="0.0" />
         </attvalues>
       </node>
-      <node id="ot_4" label="И">
+      <node id="bu_6" label="Хранение оперативных данных">
         <attvalues>
-          <attvalue for="0" value="or" />
-          <attvalue for="1" value="ot" />
+          <attvalue for="0" value="service" />
+          <attvalue for="1" value="bu" />
           <attvalue for="2" value="1" />
-          <attvalue for="3" value="0.5" />
-          <attvalue for="4" value="733000.0" />
-        </attvalues>
-      </node>
-      <node id="ot_12" label="ИЛИ">
-        <attvalues>
-          <attvalue for="0" value="and" />
-          <attvalue for="1" value="ot" />
-          <attvalue for="2" value="1" />
-          <attvalue for="3" value="0.22" />
-          <attvalue for="4" value="211000.0" />
-        </attvalues>
-      </node>
-      <node id="ot_14" label="ИЛИ">
-        <attvalues>
-          <attvalue for="0" value="and" />
-          <attvalue for="1" value="ot" />
-          <attvalue for="2" value="1" />
-          <attvalue for="3" value="0.247" />
-          <attvalue for="4" value="100000.0" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="1000000.0" />
         </attvalues>
       </node>
     </nodes>
     <edges>
-      <edge source="it_7" target="ot_12" id="17" weight="0.1" />
-      <edge source="it_6" target="ot_12" id="18" weight="0.2" />
-      <edge source="mt_1" target="ot_4" id="0" weight="0.2" />
-      <edge source="mt_2" target="ot_4" id="1" weight="0.3" />
-      <edge source="mt_3" target="ot_4" id="2" weight="0.5" />
-      <edge source="mt_9" target="it_8" id="3" weight="0.6" />
-      <edge source="it_5" target="it_6" id="9" weight="0.3" />
-      <edge source="it_5" target="it_7" id="10" weight="0.3" />
-      <edge source="it_5" target="it_8" id="11" weight="0.4" />
-      <edge source="it_17" target="bs_18" id="12" weight="1.0" />
-      <edge source="it_8" target="it_10" id="13" weight="0.5" />
-      <edge source="it_8" target="it_11" id="14" weight="0.5" />
-      <edge source="it_11" target="ot_14" id="15" weight="0.9" />
-      <edge source="it_10" target="ot_12" id="16" weight="0.7" />
-      <edge source="mt_16" target="it_17" id="4" weight="1.0" />
-      <edge source="ot_4" target="it_5" id="5" weight="1.0" />
-      <edge source="ot_12" target="ot_14" id="7" weight="0.1" />
-      <edge source="ot_12" target="bs_13" id="8" weight="1.0" />
-      <edge source="ot_14" target="bs_15" id="6" weight="1.0" />
+      <edge source="bs_1" target="bu_1" id="bs_1-bu_1" weight="1.0" />
+      <edge source="bs_4" target="bu_4" id="bs_4-bu_4" weight="1.0" />
+      <edge source="it_8" target="bs_4" id="it_8-bs_4" weight="1.0" />
+      <edge source="it_9" target="bs_3" id="it_9-bs_3" weight="1.0" />
+      <edge source="it_3" target="it_1" id="it_3-it_1" weight="0.4" />
+      <edge source="it_2" target="it_1" id="it_2-it_1" weight="0.4" />
+      <edge source="it_4" target="it_1" id="it4-it_1" weight="0.2" />
+      <edge source="it_5" target="bs_2" id="it_5-bs_2" weight="0.6" />
+      <edge source="bs_5" target="bu_5" id="bs_5-bu_5" weight="1.0" />
+      <edge source="bs_5" target="bu_6" id="bs_5-bu_6" weight="1.0" />
+      <edge source="bu_2" target="br_1" id="bu_2-br_1" weight="0.5" />
+      <edge source="bu_3" target="br_2" id="bu_3-br_2" weight="1.0" />
+      <edge source="bu_5" target="br_3" id="bu_5-br_3" weight="0.3" />
+      <edge source="bu_4" target="br_3" id="bu_4-br_3" weight="0.6" />
+      <edge source="it_1" target="bs_1" id="it_1-bs_1" weight="1.0" />
+      <edge source="br_1" target="bp_1" id="br_1-bp_1" weight="0.4" />
+      <edge source="br_2" target="bp_1" id="br_2-bp_1" weight="0.4" />
+      <edge source="br_3" target="bp_1" id="br_3-bp_1" weight="0.2" />
+      <edge source="bu_1" target="br_1" id="bu_1-br_1" weight="0.5" />
+      <edge source="bs_2" target="bu_2" id="bs_2-bu_2" weight="0.9" />
+      <edge source="bs_3" target="bu_3" id="bs_3-bu_3" weight="1.0" />
+      <edge source="it_6" target="bs_2" id="it_6-bs_2" weight="0.4" />
+      <edge source="it_7" target="bs_5" id="it_7-bs_5" weight="1.0" />
+      <edge source="bu_6" target="br_3" id="bu_6-br_3" weight="0.1" />
     </edges>
   </graph>
 </gexf>
