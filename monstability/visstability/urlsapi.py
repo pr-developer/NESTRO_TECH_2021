@@ -7,7 +7,7 @@ URL_FORMAT_OVERRIDE = 'params'
 
 urlpatterns = format_suffix_patterns([
     path('nodes/', viewsapi.NodesViewSet.as_view({'get': 'list', 'post': 'create',})),
-    path('nodes/<int:pk>/', viewsapi.NodesViewSet.as_view({'get': 'retrieve', 'put': 'update', 'delete': 'destroy',})),
+    path('nodes/<str:id_gr>/', viewsapi.NodesViewSet.as_view({'get': 'retrieve', 'put': 'update', 'delete': 'destroy',})),
     path('edges/', viewsapi.EdgesViewSet.as_view({'get': 'list', 'post': 'create',})),
-    path('edges/<int:pk>/', viewsapi.EdgesViewSet.as_view({'get': 'retrieve', 'put': 'update', 'delete': 'destroy',})),
+    path('edges/<str:id_gr>', viewsapi.EdgesViewSet.as_view({'get': 'retrieve', 'put': 'update', 'delete': 'destroy',})),
 ])

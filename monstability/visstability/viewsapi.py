@@ -11,6 +11,8 @@ class NodesViewSet(viewsets.ModelViewSet):
     #permission_classes = [ObjectPermissions, ]
     serializer_class = NodesSerializer
     queryset = Nodes.objects.order_by('id')
+    lookup_field = 'id_gr'
+
 
 ##### Edges #####
 class EdgesViewSet(viewsets.ModelViewSet):
@@ -19,3 +21,4 @@ class EdgesViewSet(viewsets.ModelViewSet):
     #permission_classes = [ObjectPermissions, ]
     serializer_class = EdgesSerializer
     queryset = Edges.objects.order_by('id')
+    lookup_field = 'id_gr'

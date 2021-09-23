@@ -16,6 +16,11 @@ import os
 
 from datetime import timedelta
 
+# Загрузка переменных окружения
+from dotenv import load_dotenv
+dotenv_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), '.env')
+if os.path.exists(dotenv_path):
+    load_dotenv(dotenv_path)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 import django.db
@@ -30,10 +35,12 @@ BASE_DIR = Path(__file__).resolve().parent
 SECRET_KEY = 'django-insecure-i&+d&x1(n)p_%2wybh(ww3^^syx=anm3wqujjwz%^j7zawd#e8'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
-#ALLOWED_HOSTS = os.environ.get("DJANGOHOSTS")
-ALLOWED_HOSTS = ['nestrotech', 'dh.bitc.ru', '127.0.0.1', 'localhost']
+#DEBUG = True
+DEBUG = bool(os.environ.get('DJANGO_DEBUG'))
+
+ALLOWED_HOSTS = str(os.environ.get("DJANGO_ALLOWED_HOSTS")).split(' ')
+#ALLOWED_HOSTS = ['nestrotech', 'dh.bitc.ru', '127.0.0.1', 'localhost']
 
 # Добавление каталога для размещения шаблонов
 PROJECT_ROOT = os.path.dirname(__file__)
@@ -90,27 +97,27 @@ WSGI_APPLICATION = 'monstability.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': os.environ.get('MSDBNAME'),
+#         'USER': os.environ.get("MSDBUSER"),
+#         'PASSWORD': os.environ.get("MSDBPASSWORD"),
+#         'HOST': os.environ.get("MSDBHOST"),
+#         'PORT': os.environ.get("MSDBPORT"),
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'msdb',
         'USER': 'mseuser',
-        'PASSWORD': os.environ.get("DBPASSWORD"),
-        'HOST': os.environ.get("DBHOST"),
-        'PORT': os.environ.get("DBPORT"),
+        'PASSWORD': 'P@ssw0rd',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'msdb',
-#         'USER': 'mseuser',
-#         'PASSWORD': 'P@ssw0rd',
-#         'HOST': '127.0.0.1',
-#         'PORT': '5432',
-#     }
-# }
 
 
 # Password validation

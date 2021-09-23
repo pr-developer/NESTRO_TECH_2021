@@ -34,7 +34,7 @@ class Nodes(models.Model):
                             )
     label_gr = models.CharField('label',
                                 help_text='Название вершины',
-                                max_length=100,
+                                max_length=250,
                                 )
     type_gr = models.CharField('type',
                                help_text='Тип вершины графа',
@@ -54,8 +54,24 @@ class Nodes(models.Model):
                               help_text='Устойчивость',
                               )
     costdown = models.FloatField('costdown',
-                              help_text='Стоимость простоя',
+                                 help_text='Стоимость простоя',
+                                 )
+    coordX = models.IntegerField('X',
+                              help_text='Координата X',
                               )
+    coordY = models.IntegerField('Y',
+                              help_text='Координата Y',
+                              )
+    RTO = models.IntegerField('RTO',
+                              help_text='Время, в течении которого узел может оставаться недоступным',
+                              )
+    RPO = models.IntegerField('RPO',
+                              help_text='Максимальный период времени, за который могут быть потеряны данные узла',
+                              )
+    color = models.CharField('color',
+                             help_text='Цвет',
+                             max_length=100,
+                             )
 
     def __str__(self):
         return f"{self.label_gr} ({self.id_gr})"
@@ -82,6 +98,10 @@ class Edges(models.Model):
     weight = models.FloatField('weight',
                               help_text='Весм вершины',
                               )
+    color = models.CharField('color',
+                             help_text='Цвет',
+                             max_length=100,
+                             )
     def __str__(self):
         return f"({self.source}) - ({self.source})"
 

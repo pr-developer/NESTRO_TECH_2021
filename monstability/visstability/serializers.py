@@ -10,7 +10,8 @@ class NodesSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Nodes
-        fields = ('id', 'label',  'type', 'layer', 'access', 'stead', 'costdown')
+        fields = ('id', 'label',  'type', 'layer', 'access', 'stead', 'costdown', 'coordX', 'coordY', 'RTO', 'RPO')
+
 
 class EdgesSerializer(serializers.ModelSerializer):
 
