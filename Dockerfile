@@ -15,3 +15,5 @@ RUN pip install -r reqmin.txt
 
 COPY . .
 
+RUN pip install gunicorn
+WORKDIR /usr/src/app/monstability

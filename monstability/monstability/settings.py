@@ -33,7 +33,7 @@ SECRET_KEY = 'django-insecure-i&+d&x1(n)p_%2wybh(ww3^^syx=anm3wqujjwz%^j7zawd#e8
 DEBUG = True
 
 #ALLOWED_HOSTS = os.environ.get("DJANGOHOSTS")
-ALLOWED_HOSTS = ['dh.bitc.ru', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['nestrotech', 'dh.bitc.ru', '127.0.0.1', 'localhost']
 
 # Добавление каталога для размещения шаблонов
 PROJECT_ROOT = os.path.dirname(__file__)
@@ -151,6 +151,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_DIR = os.path.join(PROJECT_ROOT, 'static')
 STATICFILES_DIRS = [STATIC_DIR]
+STATIC_ROOT = os.path.join(os.path.dirname(PROJECT_ROOT), 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
