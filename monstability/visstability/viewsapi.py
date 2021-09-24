@@ -1,8 +1,8 @@
-from rest_framework import viewsets, authentication
+from rest_framework import views, viewsets, authentication
+from rest_framework.response import Response
 
 from .models import Nodes, Edges
-from .serializers import NodesSerializer, EdgesSerializer
-#from .permissions import ObjectPermissions
+from .serializers import NodesSerializer, EdgesSerializer, NodesViewSerializer, EdgesViewSerializer
 
 ##### Nodes #####
 class NodesViewSet(viewsets.ModelViewSet):
@@ -22,3 +22,19 @@ class EdgesViewSet(viewsets.ModelViewSet):
     serializer_class = EdgesSerializer
     queryset = Edges.objects.order_by('id')
     lookup_field = 'id_gr'
+
+##### Nodes and Edges #####
+class NodesListView(views.APIView):
+    """Nodes and Edges"""
+
+    def get(self, request, format=None, **kwargs):
+        nodeslst = Nodes.objects.all()
+        nodes_serializer = NodesViewSerializer(nodeslst, many=True)
+        edgeslst = Edges.objects.all()
+        edges_serializer = EdgesViewSerializer(edgeslst, many=True)
+
+        return Response({
+            "class": "GraphLinksModel",
+            'nodeDataArray': nodes_serializer.data,
+            'linkDataArray': edges_serializer.data,
+        })

@@ -73,6 +73,16 @@ class Nodes(models.Model):
                              max_length=100,
                              )
 
+    def pos(self):
+        return f"{self.coordX:d} {self.coordY:d}"
+
+    def description(self):
+        return f"дост.: {self.access}\n" \
+               f"уст.: {self.stead*100:.2f} %\n" \
+               f"стоим.: {self.costdown:.2f} руб.\n" \
+               f"RTO: {self.RTO} ч\n" \
+               f"RPO: {self.RPO} ч"
+
     def __str__(self):
         return f"{self.label_gr} ({self.id_gr})"
 

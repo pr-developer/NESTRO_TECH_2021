@@ -12,6 +12,17 @@ class NodesSerializer(serializers.ModelSerializer):
         model = Nodes
         fields = ('id', 'label',  'type', 'layer', 'access', 'stead', 'costdown', 'coordX', 'coordY', 'RTO', 'RPO')
 
+class NodesViewSerializer(serializers.ModelSerializer):
+
+    text = serializers.CharField(source='label_gr')
+    key = serializers.CharField(source='id_gr')
+    icon = serializers.CharField(source='layer')
+    caption = serializers.CharField(source='label_gr')
+
+    class Meta:
+        model = Nodes
+        fields = ('key', 'pos', 'icon', 'color', 'text', 'description', 'caption')
+
 
 class EdgesSerializer(serializers.ModelSerializer):
 
@@ -20,3 +31,16 @@ class EdgesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Edges
         fields = ('id', 'source',  'target', 'weight')
+
+class EdgesViewSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Edges
+
+    def to_representation(self, instance):
+        return {
+            'from':instance.source,
+            'to': instance.target,
+            'weight':instance.weight,
+            'color':instance.color,
+        }
