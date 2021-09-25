@@ -21,7 +21,7 @@ class NodesViewSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Nodes
-        fields = ('key', 'pos', 'icon', 'color', 'text', 'description', 'caption')
+        fields = ('key', 'pos', 'icon', 'color', 'text', 'description', 'caption', 'access', 'stead', 'costdown', 'RTO', 'RPO')
 
 
 class EdgesSerializer(serializers.ModelSerializer):
