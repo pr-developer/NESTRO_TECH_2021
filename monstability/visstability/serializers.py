@@ -16,7 +16,6 @@ class NodesViewSerializer(serializers.ModelSerializer):
 
     text = serializers.CharField(source='label_gr')
     key = serializers.CharField(source='id_gr')
-    #icon = serializers.CharField(source='layer')
     caption = serializers.CharField(source='label_gr')
 
     class Meta:

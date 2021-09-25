@@ -15,8 +15,8 @@ class Nodes(models.Model):
 
     NODES_TYPE = [
         ('metric', 'метрика'),
-        ('or', 'И'),
-        ('and', 'ИЛИ'),
+        ('or', 'ИЛИ'),
+        ('and', 'И'),
         ('true', 'единица'),
         ('service', 'сервис'),
     ]
