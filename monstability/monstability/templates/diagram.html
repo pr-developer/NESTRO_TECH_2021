@@ -10,11 +10,32 @@
         Расчет показателей снизу вверх: "Доступность", "Устойчивость"</br>
         Расчет показателей сверху вниз: "Стоимость простоя", "RTO", "RPO"
       </div>
-      <div id="chart"></div>
+
+      <div id="sample">
+        <div style="width:100%">
+            <div id="myPaletteDiv" style="border: solid 1px black; width: 100%; height: 80px; background: whitesmoke"></div>
+            <div id="myDiagramDiv" style="border: solid 1px black; width:100%; height:600px; display: inline-block; vertical-align: top"></div>
+            <div id="infobox" style="display: inline-block; vertical-align: top; width: 256px; background: #757575; color: #FFF; padding: 20px; display: none;">
+              <img id="Image" width="216" alt="" src=""/>
+              <h3 id="Title"></h3>
+              <p id="Description">Select a node to see more information.</p>
+            </div>
+
+            <div id="myInspector"></div>
+
+            <br>
+            <button class="btn btn-outline-secondary" onclick="reload();">Обновить</button>
+            <br><br>
+            <textarea id="mySavedModel" style="width: 100%; height: 400px; display: none;">
+            </textarea>
+       </div>
+    </div>
+
     </main>
     {% endblock  %}
     {% block jscript %}
     <script src="https://d3js.org/d3.v3.min.js"></script>
-    <script src="{% static 'js/base_app.js' %}"></script>
-    <script src="{% static 'js/app.js' %}"></script>
+    <script src="{% static 'js/plugins/gojs/release/go.js' %}"></script>
+    <script src="{% static 'js/plugins/gojs/extensions/DataInspector.js' %}"></script>
+    <script src="{% static 'js/gojs.js' %}?1632576182'"></script>
     {% endblock  %}
