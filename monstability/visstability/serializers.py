@@ -16,12 +16,12 @@ class NodesViewSerializer(serializers.ModelSerializer):
 
     text = serializers.CharField(source='label_gr')
     key = serializers.CharField(source='id_gr')
-    icon = serializers.CharField(source='layer')
+    #icon = serializers.CharField(source='layer')
     caption = serializers.CharField(source='label_gr')
 
     class Meta:
         model = Nodes
-        fields = ('key', 'pos', 'icon', 'color', 'text', 'description', 'caption', 'access', 'stead', 'costdown', 'RTO', 'RPO')
+        fields = ('key', 'pos', 'icon', 'color', 'text', 'description', 'caption', 'icon', 'access', 'stead', 'costdown', 'RTO', 'RPO')
 
 
 class EdgesSerializer(serializers.ModelSerializer):

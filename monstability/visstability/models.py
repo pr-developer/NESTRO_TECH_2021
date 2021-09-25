@@ -91,6 +91,9 @@ class Nodes(models.Model):
                f"RTO: {self.RTO} ч\n" \
                f"RPO: {self.RPO} ч"
 
+    def icon(self):
+        return f"{self.layer}_{self.type_gr}"
+
     def __str__(self):
         return f"{self.label_gr} ({self.id_gr})"
 
