@@ -721,19 +721,50 @@ function init() {
 //        }
 //      });
 
-      var data_request = {
-          "id": nodeData.key,
-          "label": nodeData.caption,
-          "type": nodeType,
-          "layer": nodeLayer,
-          "access": nodeData.access,
-          "stead": nodeData.stead,
-          "costdown": nodeData.costdown,
-          "coordX": selectedNode.location.x,
-          "coordY": selectedNode.location.y,
-          "RTO": nodeData.RTO,
-          "RPO": nodeData.RPO
-      };
+    // Django. Cross Site Request Forgery protection¶
+    // https://docs.djangoproject.com/en/3.2/ref/csrf/
+    function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie != '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+    }
+
+    var csrftoken = getCookie('csrftoken');
+
+    function csrfSafeMethod(method) {
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
+
+    jQuery.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+        }
+    });
+
+    var data_request = {
+      "id": nodeData.key,
+      "label": nodeData.caption,
+      "type": nodeType,
+      "layer": nodeLayer,
+      "access": nodeData.access,
+      "stead": nodeData.stead,
+      "costdown": nodeData.costdown,
+      "coordX": selectedNode.location.x,
+      "coordY": selectedNode.location.y,
+      "RTO": nodeData.RTO,
+      "RPO": nodeData.RPO
+    };
 
     jQuery.ajax({
         url: "http://dh.bitc.ru:8021/api/v1/nodes/"+nodeData.key+"/",
