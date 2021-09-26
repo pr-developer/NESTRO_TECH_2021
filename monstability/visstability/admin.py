@@ -103,7 +103,7 @@ class NodesAdmin(ImportExportModelAdmin):
     list_display = ('id', 'id_gr', 'label_gr', 'type_gr', 'layer', 'access', 'stead', 'costdown', 'color',)
     list_filter = ('type_gr', 'layer',)
     list_display_links = ('id_gr',)
-    actions = ['grload_model', 'grsave_model', 'grcalc_model', 'grcalc_costdown']
+    actions = ['grload_model', 'grsave_model', 'grcalc_model', 'grcalc_costdown', 'grcalc_RTORPO']
 
     def changelist_view(self, request, extra_context=None):
         ''' эмуляция выбора всех элементов списка '''
@@ -148,6 +148,14 @@ class NodesAdmin(ImportExportModelAdmin):
         grput_model(gr.G)
     grcalc_costdown.short_description = 'Пересчитать стоимость простоя'
 
+    def grcalc_RTORPO(self, request, queryset):
+        ''' пересчет показателей RTO, RPO '''
+        gr = GStead()
+        grget_model(gr.G)
+        for node in queryset:
+            gr.calc_RTORPO(node_id=node.id_gr)
+        grput_model(gr.G)
+    grcalc_RTORPO.short_description = 'Пересчитать RTO и RPO'
 
 @admin.register(Edges)
 class EdgesAdmin(ImportExportModelAdmin):

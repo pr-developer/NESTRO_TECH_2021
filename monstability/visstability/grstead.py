@@ -57,18 +57,38 @@ class GStead:
             self._calc_access(node_id=v)    # расчитываем доступность узла на конце ребра
 
 
+    def calc_RTORPO(self, node_id):
+        """ функция расчета RTO, RPO в зависимых узлах"""
+        lst_out_edges = list(self.G.out_edges(node_id)) # список исходящих ребер
+        if len(lst_out_edges) > 0:    # обновление RTO, RPO текущего узла если у него есть входящие ребра
+            minRTO = self.G.nodes[lst_out_edges[0][1]]['RTO']
+            minRPO = self.G.nodes[lst_out_edges[0][1]]['RPO']
+            for u, v in lst_out_edges:
+                if self.G.nodes[v]['RTO'] < minRTO:
+                    minRTO = self.G.nodes[v]['RTO']  # минимальное значение RTO исходящих узлов
+                if self.G.nodes[v]['RPO'] < minRPO:
+                    minRPO = self.G.nodes[v]['RPO']  # минимальное значение RPO исходящих узлов
+
+            self.G.nodes[node_id]['RTO'] = minRTO
+            self.G.nodes[node_id]['RPO'] = minRPO
+
+        lst_in_edges = list(self.G.in_edges(node_id))  # список входящих ребер
+        for u, v in lst_in_edges:   # рекурсивный вызов расчета для узлов входящих ребер
+            self.calc_RTORPO(u)
+
+
     def calc_costdown(self, node_id):
         """ функция расчета стоимости простоя в зависимых узлах"""
 
         lst_out_edges = list(self.G.out_edges(node_id)) # список исходящих ребер
-        costdown = 0
-        for u, v in lst_out_edges:
-            if self.G.nodes[v]['type'] == TYPE_OR:
-                costdown += self.G.nodes[v]['costdown'] * self.G[u][v]['weight']  # ИЛИ сумма делится в соответствии с весами
-            else:
-                costdown += self.G.nodes[v]['costdown'] # для остальных И сумма равна для всех узлов
-
         if len(lst_out_edges) > 0:    # обновление стоимости простоя текущего узла если у него есть входящие ребра
+            costdown = 0
+            for u, v in lst_out_edges:
+                if self.G.nodes[v]['type'] == TYPE_OR:
+                    costdown += self.G.nodes[v]['costdown'] * self.G[u][v]['weight']  # ИЛИ сумма делится в соответствии с весами
+                else:
+                    costdown += self.G.nodes[v]['costdown'] # для остальных И сумма равна для всех узлов
+
             self.G.nodes[node_id]['costdown'] = costdown
 
         lst_in_edges = list(self.G.in_edges(node_id))  # список входящих ребер
