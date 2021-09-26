@@ -11,6 +11,9 @@ from .models import Nodes, Edges, TestCaseNodes
 from .grstead import GStead
 
 FILE_MODEL = 'monstability_model.xml'
+COLOR_GOOT = 'green'
+COLOR_WAR = 'orange'
+COLOR_ERR = 'red'
 
 class TestCaseNodesResource(resources.ModelResource):
     """Класс для импорта тест-кейса"""
@@ -63,12 +66,21 @@ def grget_model(AG):
             color=NE.color,
         )
 
+def get_color(access, stead):
+    ''' получить цвет узла '''
+    if not access or stead < 0.6:
+        return COLOR_ERR
+    elif stead < 0.9:
+        return COLOR_WAR
+    else:
+        return COLOR_GOOT
 
 def grput_model(AG):
     ''' выгрузка графа в базу данных '''
     if len(AG) > 0:
         Nodes.objects.all().delete()
         for node in AG.nodes.data():
+            nodecolor = get_color(node[1]['access'], node[1]['stead'])
             ND = Nodes.objects.create(
                 id_gr=node[0],
                 label_gr=node[1]['label'],
@@ -81,18 +93,21 @@ def grput_model(AG):
                 coordY=node[1]['coordY'],
                 RTO=node[1]['RTO'],
                 RPO=node[1]['RPO'],
-                color=node[1]['color'],
+                # color=node[1]['color'],
+                color=nodecolor,
             )
             ND.save()
 
         Edges.objects.all().delete()
         for edge in AG.edges.data():
+            edgecolor = get_color(AG.nodes.data()[edge[0]]['access'], AG.nodes.data()[edge[0]]['stead'])
             NE = Edges.objects.create(
                 source=edge[0],
                 target=edge[1],
                 id_gr=edge[2]['id'],
                 weight=edge[2]['weight'],
-                color=edge[2]['color'],
+                # color=edge[2]['color'],
+                color=edgecolor,
             )
             NE.save()
 
