@@ -905,6 +905,9 @@ function load(){
       //console.log(data);
       document.getElementById("mySavedModel").textContent = data;
       init();
+
+      var d = new Date();
+      $("#dataTime time").text(d);
     }
   });
 }
@@ -916,6 +919,9 @@ function reload(){
     success: function(data){
       document.getElementById("mySavedModel").textContent = data;
       myDiagram.model = go.Model.fromJson(document.getElementById("mySavedModel").textContent);
+      
+      var d = new Date();
+      $("#dataTime time").text(d);
     }
   });
 }
