@@ -607,7 +607,7 @@ function init() {
         $(go.Shape,
           {
             name: "PORT",
-            width: 40, height: 24, margin: new go.Margin(-1, 0, 0, 0),
+            width: 40, height: 6, margin: new go.Margin(-1, 0, 0, 0),
             stroke: null, strokeWidth: 0, fill: "gray",
             portId: "", cursor: "pointer", fromLinkable: true, toLinkable: true
           },
@@ -797,7 +797,7 @@ function init() {
     });
     var tot = Math.max(sideinputs, sideoutputs);
     tot = Math.max(1, Math.min(tot, 2));
-    port.height = tot * (10+2) + 2;  // where 10 is the link path's strokeWidth
+    port.height = tot * (2+2) + 2;  // where 10 is the link path's strokeWidth
   }
 
   myDiagram.linkTemplate =
@@ -823,7 +823,8 @@ function init() {
         // but use the link's data.color if it is set
         new go.Binding("stroke", "color", colorFunc)),
       $(go.Shape, { isPanelMain: true, stroke: "white", strokeWidth: 2, name: "PIPE", strokeDashArray: [20, 40] }),
-      $(go.Shape, { toArrow: "Triangle", scale: 1.3, fill: "gray", stroke: null }),
+      $(go.Shape, { toArrow: "Triangle", scale: 1.3, fill: "gray", stroke: null },
+        new go.Binding("fill", "color", colorFunc)),
     );
 
   var SpotNames = ["Top", "Left", "Right", "Bottom", "TopSide", "LeftSide", "RightSide", "BottomSide"];
