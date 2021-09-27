@@ -614,7 +614,7 @@ function init() {
           new go.Binding("fill", "color", colorFunc)),
         $(go.TextBlock,
           {
-            font: "Semi-bold 11px Lato, sans-serif",
+            font: "Semi-bold 14px Lato, sans-serif",
             textAlign: "center",
             margin: 3,
             maxSize: new go.Size(120, NaN),
